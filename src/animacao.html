@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Animacao</title>
+        <title>Animation</title>
         <style>
             @keyframes move{
-                from {
+                0% {
                     left :0%;
                 }
-                to {
-                    left : 90%;
+                50% {
+                    left : 50%;
+                }
+                100% {
+                    left : 0%;
                 }
             }
 
@@ -17,11 +20,28 @@
                 animation-name: move;
                 animation-duration: 5s;
                 animation-fill-mode: forwards;
+                animation-iteration-count: infinite;
 
             }
         </style>
+        <script>
+            document.addEventListener('DOMContentLoaded',() =>{
+                const h1 = document.querySelector('h1');
+
+                //para animação infinita
+                h1.style.animationPlayState = 'paused';
+
+                document.querySelector('button').onclick = () =>{
+                    if (h1.style.animationPlayState === 'paused')
+                        h1.style.animationPlayState = 'running';
+                    else
+                    h1.style.animationPlayState = 'paused';
+                }
+            });
+        </script>
     </head>
     <body>
-        <h1>Bem vindo!</h1>
+        <button>Click here!</button>
+        <h1>Bem vindo!!</h1>
     </body>
 </html>
